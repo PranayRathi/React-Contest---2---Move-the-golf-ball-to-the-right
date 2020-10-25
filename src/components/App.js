@@ -13,16 +13,16 @@ class App extends Component {
     this.buttonClickHandler = this.buttonClickHandler.bind(this);
   }
 
-  MoveRight() {
-    document.onkeydown = (event) => {
-      console.log(event);
-      let moveRight =
-        Number(this.state.ballPosition.left.slice(0, -2)) + 5 + "px";
-      if (event.keyCode === 39) {
-        this.setState({ ballPosition: { left: moveRight } });
-      }
-    };
-  }
+  //   MoveRight() {
+  //     document.onkeydown = (event) => {
+  //       console.log(event);
+  //       let moveRight =
+  //         Number(this.state.ballPosition.left.slice(0, -2)) + 5 + "px";
+  //       if (event.keyCode === 39) {
+  //         this.setState({ ballPosition: { left: moveRight } });
+  //       }
+  //     };
+  //   }
 
   //call back function
   buttonClickHandler() {
@@ -45,7 +45,14 @@ class App extends Component {
 
   //bind ArrowRight keydown event
   componentDidMount() {
-    this.MoveRight = this.MoveRight.bind(this);
+    document.onkeydown = (event) => {
+      let move = Number(this.state.ballPosition.left.slice(0, -2)) + 5 + "px";
+      if (event.key === "ArrowRight") {
+        this.setState({
+          ballPosition: { left: move }
+        });
+      }
+    };
   }
 
   render() {
