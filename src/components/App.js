@@ -15,6 +15,7 @@ class App extends Component {
 
   MoveRight() {
     document.onkeydown = (event) => {
+      console.log(event);
       let moveRight =
         Number(this.state.ballPosition.left.slice(0, -2)) + 5 + "px";
       if (event.keyCode === 39) {
